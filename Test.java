@@ -8,5 +8,10 @@ public class Test {
         grafin.add("data2");
         grafin.add("data2");
         grafin.add("data3");
+        grafin.addArista("data", "data1");
+        grafin.addArista("data", "data1");
+
+        System.out.println(grafin.getVertice("data").toString() );
+grafin.impListaAdyacencia();
     }
 }
