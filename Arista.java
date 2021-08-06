@@ -1,8 +1,8 @@
 package Grafos;
 
 public class Arista {
-    Vertice siguiente;
-    double peso;
+    protected Vertice siguiente;
+    protected double peso;
 
     public Arista() {
     }

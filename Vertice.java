@@ -1,9 +1,9 @@
 package Grafos;
 
 public class Vertice<E extends Comparable<E>> {
-    E data;
+    protected E data;
     private int numAristas = 0;
-    Arista[] listAristas;
+    protected Arista[] listAristas;
 
     public Vertice(E data, int maxVertices) {
         this.data = data;

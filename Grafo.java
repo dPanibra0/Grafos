@@ -1,9 +1,9 @@
 package Grafos;
 
 public class Grafo<E extends Comparable<E>> {
-    int numVertice;
-    int maxVertices;
-    Vertice<E>[] listVertices;
+    private int numVertice;
+    private int maxVertices;
+    private Vertice<E>[] listVertices;
 
     public Grafo(int maxVertices) {
         this.listVertices = new Vertice[maxVertices];
@@ -77,12 +77,53 @@ public class Grafo<E extends Comparable<E>> {
 
         String line = "";
         for (int i = 0; (listVertices[i] != null) && (i < listVertices.length); i++) {
-            line = listVertices[i].data+"-> ";
-            Arista[] listA=listVertices[i].getlistAristas();
+            line = listVertices[i].data + "-> ";
+            Arista[] listA = listVertices[i].getlistAristas();
             for (int j = 0; (listA[j] != null) && (j < listA.length); j++) {
-                line+=listA[j].siguiente.data.toString() + ":" +listA[j].peso+"; ";
+                line += listA[j].siguiente.data.toString() + ":" + listA[j].peso + "; ";
             }
             System.out.println(line);
         }
     }
+
+    public void addWord(E word) {
+        this.add(word);
+        Vertice v = this.getVertice(word);
+        for (int i = 0; (listVertices[i] != null) && (i < listVertices.length); i++) {
+
+            if (isAdjacent(word, listVertices[i].data)) {
+                Arista a = new Arista(listVertices[i]);
+                v.addArista(a);
+            }
+        }
+
+    }
+
+    private boolean isAdjacent(E wa, E wb) {
+        String a= wa.toString();
+        String b= wb.toString();
+        if ((a.length() == b.length()) && (a!=b)) {
+            int cont = 0;
+            for (int i = 0; i < a.length(); i++) {
+                if (a.charAt(i) != b.charAt(i)) {
+                    cont++;
+                }
+            }
+            return cont > 1 ? false : true;
+        }
+        return false;
+    }
+
+    public void BFS() {
+
+    }
+
+    public void DFS() {
+
+    }
+
+    public void Dijkstra() {
+
+    }
+
 }
